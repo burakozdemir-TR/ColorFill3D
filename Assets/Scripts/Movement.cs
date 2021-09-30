@@ -92,8 +92,8 @@ public class Movement : MonoBehaviour
                 if (!spanLeft && temp.x > 0 && temp.x - 1 > 0 ? ground.grid[y1, temp.x - 1].GetComponent<SpriteRenderer>().color == oldColor : false)
                 {
                     pixels.Push(new Point(y1, temp.x - 1));
-                    ground.grid[y1, temp.x - 1].GetComponent<SpriteRenderer>().color = newColor;
                     spanLeft = true;
+                    ground.grid[y1, temp.x - 1].GetComponent<SpriteRenderer>().color = newColor;
                 }
                 else if (spanLeft && temp.x - 1 == 0 && temp.x - 1 > 0 ? ground.grid[y1, temp.x - 1].GetComponent<SpriteRenderer>().color != oldColor : false)
                 {
@@ -102,8 +102,8 @@ public class Movement : MonoBehaviour
                 if (!spanRight && temp.x < ground.rows - 1 && temp.x + 1 > ground.rows ? ground.grid[y1, temp.x + 1].GetComponent<SpriteRenderer>().color == oldColor : false)
                 {
                     pixels.Push(new Point(y1, temp.x + 1));
-                    ground.grid[y1, temp.x + 1].GetComponent<SpriteRenderer>().color = newColor;
                     spanRight = true;
+                    ground.grid[y1, temp.x + 1].GetComponent<SpriteRenderer>().color = newColor;
                 }
                 else if (spanRight && temp.x < ground.rows - 1 && temp.x + 1 > ground.rows ? ground.grid[y1, temp.x + 1].GetComponent<SpriteRenderer>().color != oldColor : false)
                 {
