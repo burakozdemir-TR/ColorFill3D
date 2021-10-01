@@ -12,6 +12,7 @@ public class Grid : MonoBehaviour
     void Start()
     {
         GenerateGrid(rows,cols);
+        AdjustCamera();
     }
     private void GenerateGrid(int width,int height)
     {
@@ -29,5 +30,9 @@ public class Grid : MonoBehaviour
             }
         }
         Destroy(referenceTile);
+    }
+    private void AdjustCamera()
+    {
+        Camera.main.transform.position = new Vector3(rows/2,cols/2,-rows);
     }
 }

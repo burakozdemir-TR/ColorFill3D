@@ -437,12 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e328bb7878e882843b5080e49c88c421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0}
-  direction: {x: 0, y: 0}
-  directionChosen: 0
-  texture: {fileID: 2800000, guid: 077bd182a21db324f8489fdc99641caa, type: 3}
   point: {fileID: 0}
-  collision: {x: 0, y: 0, z: 0}
 --- !u!1 &1452656894
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,8 +482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821aa8a3ee8db3e42a1f1d9050c43181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: 20
-  cols: 20
+  rows: 15
+  cols: 15
   tileSize: 1
 --- !u!1 &1529033912
 GameObject:
@@ -599,12 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e328bb7878e882843b5080e49c88c421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0}
-  direction: {x: 0, y: 0}
-  directionChosen: 0
-  texture: {fileID: 2800000, guid: 077bd182a21db324f8489fdc99641caa, type: 3}
   point: {fileID: 0}
-  collision: {x: 0, y: 0, z: 0}
 --- !u!54 &1529033918
 Rigidbody:
   m_ObjectHideFlags: 0
