@@ -168,14 +168,15 @@ public class Movement : MonoBehaviour
                 counter++;
             if (i.y - 1 > 0 && ImageCheck(i.x , i.y - 1, newColor))
                 counter++;
-            x += (int)i.x;
-            y += (int)i.y;
         }
-        x /= pos.Count;
-        y /= pos.Count;
-        Debug.Log(new Vector2(x,y));
+        x = (int)pos.Average(x => x.x);
+        y = (int)pos.Average(y => y.y);
+        //Debug.Log(new Vector2(x,y));
         if (counter >= pos.Count)
+        {
+            pos.Clear();
             FloodFill(x, y, newColor);
+        }
 
     }
     bool ImageCheck(float x,float y,Color newColor)
