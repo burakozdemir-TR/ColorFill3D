@@ -61,7 +61,6 @@ public class Movement : MonoBehaviour
         }
         transform.position = targetPos;
         isMoving = false;
-
     }
     private void DetectPosition(Vector3 direction)
     {
@@ -83,14 +82,13 @@ public class Movement : MonoBehaviour
            || (direction == Vector3.right && lastMovement == Vector3.left)
            || (direction == Vector3.down && lastMovement == Vector3.up)
            || (direction == Vector3.up && lastMovement == Vector3.down)
-           )
-                return;
+           )return;
             if (direction != lastMovement)
                 pos.Add(pt.xy);
             //foreach (var i in pos)
             //{
             //    Debug.Log(i.ToString());
-            //}
+            //} 
             ground.grid[pt.y, pt.x].GetComponent<SpriteRenderer>().color = Color.red;
             CheckNeighbors(pos, newColor);
         }
@@ -104,7 +102,7 @@ public class Movement : MonoBehaviour
 
         ground.grid[y, x].GetComponent<SpriteRenderer>().color = newColor;
 
-        FloodFill(y - 1, x , newColor);
+        FloodFill(y - 1 , x , newColor);
         FloodFill(y , x + 1 ,  newColor);
         FloodFill(y + 1 , x , newColor);
         FloodFill(y , x - 1 ,  newColor);
@@ -145,10 +143,11 @@ public class Movement : MonoBehaviour
         //{
         //    Debug.Log(i.sqrMagnitude);
         //}
-        if(!isMoving)
-            FloodFill(x, y, newColor);
+        if (!isMoving)
+            CheckMiddle(new Vector2(x,y),newColor);
+            //FloodFill(y, x, newColor);
         //return new Vector2(x, y);
-        //if (counter >= pos.Count *2 || counter + 1 >= pos.Count *2)
+        //if (counter >= pos.Count * 2 || counter + 1 >= pos.Count * 2)
         //{
         //    //pos.Clear();
         //    FloodFill(x, y, newColor);
