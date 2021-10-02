@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-    public int rows = 10;
-    public int cols = 10;
+    public int rows;
+    public int cols;
     public float tileSize;
     public GameObject[,] grid;
     // Start is called before the first frame update
