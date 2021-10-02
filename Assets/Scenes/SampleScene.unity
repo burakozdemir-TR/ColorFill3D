@@ -482,8 +482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821aa8a3ee8db3e42a1f1d9050c43181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: 15
-  cols: 15
+  rows: 5
+  cols: 5
   tileSize: 1
 --- !u!1 &1529033912
 GameObject:
