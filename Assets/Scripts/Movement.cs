@@ -12,6 +12,8 @@ public class Movement : MonoBehaviour
     List<Vector2> pos;
     public Point point;
     Vector3 lastMovement;
+    int x;
+    int y;
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -20,6 +22,11 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("TTTTTTTTEEEEEEEEESSSSSSSSTTTTTTTTTTTT");
+            CheckMiddle(new Vector2(x, y), Color.red);
+        }
         MoveSequance();
     }
     private void MoveSequance()
@@ -77,49 +84,51 @@ public class Movement : MonoBehaviour
     {
         if (oldColor == ground.grid[pt.y, pt.x].GetComponent<SpriteRenderer>().color)
         {
-            if (
-           (direction == Vector3.left && lastMovement == Vector3.right)
-           || (direction == Vector3.right && lastMovement == Vector3.left)
-           || (direction == Vector3.down && lastMovement == Vector3.up)
-           || (direction == Vector3.up && lastMovement == Vector3.down)
-           )return;
-            if (direction != lastMovement)
-                pos.Add(pt.xy);
+            // if (
+            //(direction == Vector3.left && lastMovement == Vector3.right)
+            //|| (direction == Vector3.right && lastMovement == Vector3.left)
+            //|| (direction == Vector3.down && lastMovement == Vector3.up)
+            //|| (direction == Vector3.up && lastMovement == Vector3.down)
+            //)return;
+            // if (direction != lastMovement)
+            // {
+            //     pos.Add(pt.xy);
+            //     CheckNeighbors(pos, newColor);
+            // }
             //foreach (var i in pos)
             //{
             //    Debug.Log(i.ToString());
             //} 
-            ground.grid[pt.y, pt.x].GetComponent<SpriteRenderer>().color = Color.red;
+            pos.Add(pt.xy);
             CheckNeighbors(pos, newColor);
+            ground.grid[pt.y, pt.x].GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
-    void FloodFill(int x, int y, Color newColor)
-    {
-        if (x + 1 > ground.rows || y + 1 > ground.cols || x < 0 || y < 0)
-            return;
-        if (newColor == ground.grid[y, x].GetComponent<SpriteRenderer>().color)
-            return;
+    //void FloodFill(int x, int y, Color newColor)
+    //{
+    //    if (x + 1 > ground.rows || y + 1 > ground.cols || x < 0 || y < 0)
+    //        return;
+    //    if (newColor == ground.grid[y, x].GetComponent<SpriteRenderer>().color)
+    //        return;
 
-        ground.grid[y, x].GetComponent<SpriteRenderer>().color = newColor;
+    //    ground.grid[x , y].GetComponent<SpriteRenderer>().color = newColor;
 
-        FloodFill(y - 1 , x , newColor);
-        FloodFill(y , x + 1 ,  newColor);
-        FloodFill(y + 1 , x , newColor);
-        FloodFill(y , x - 1 ,  newColor);
-        pos.Clear();
-        /*For 8-connected pixels,additional calls
-        boundary_fill(x+1,y-1,fill_color,boundary_color);
-        boundary_fill(x+1,y+1,fill_color,boundary_color);
-        boundary_fill(x-1,y+1,fill_color,boundary_color);
-        boundary_fill(x-1,y-1,fill_color,boundary_color);
-        */
-    }
+    //    FloodFill(x - 1 , y , newColor);
+    //    FloodFill(x , y + 1 ,  newColor);
+    //    FloodFill(x + 1 , y , newColor);
+    //    FloodFill(x , y - 1 ,  newColor);
+    //    FloodFill(x + 1 , y - 1 , newColor);
+    //    FloodFill(x + 1 , y + 1 , newColor);
+    //    FloodFill(x - 1 , y + 1 , newColor);
+    //    FloodFill(x - 1 , y - 1 , newColor);
+    //    pos.Clear();
+    //}
     
     public void CheckNeighbors(List<Vector2> pos, Color newColor)
     {
         var counter = 0;
-        var x = 0;
-        var y = 0;
+        x = 0;
+        y = 0;
         //foreach(var i in pos)
         //{
         //    //wall
@@ -136,7 +145,7 @@ public class Movement : MonoBehaviour
         //}
         x = (int)pos.Average(x => x.x);
         y = (int)pos.Average(y => y.y);
-        //Debug.Log(new Vector2(x,y));
+        Debug.Log(new Vector2(x,y));
         //Debug.Log(counter);
         //Debug.Log(pos.Count);
         //foreach(var i in pos)
@@ -145,7 +154,7 @@ public class Movement : MonoBehaviour
         //}
         
         //if (!isMoving)
-            CheckMiddle(new Vector2(x,y),newColor);
+            //CheckMiddle(new Vector2(x,y),newColor);
             //FloodFill(y, x, newColor);
         //return new Vector2(x, y);
         //if (counter >= pos.Count * 2 || counter + 1 >= pos.Count * 2)
@@ -163,10 +172,11 @@ public class Movement : MonoBehaviour
 
         ground.grid[(int)middle.y, (int)middle.x].GetComponent<SpriteRenderer>().color = newColor;
 
-        CheckMiddle(new Vector2(middle.y - 1, middle.x), newColor);
-        CheckMiddle(new Vector2(middle.y, middle.x + 1), newColor);
-        CheckMiddle(new Vector2(middle.y + 1, middle.x), newColor);
-        CheckMiddle(new Vector2(middle.y, middle.x - 1), newColor);
+        CheckMiddle(new Vector2(middle.x - 1, middle.y), newColor);
+        CheckMiddle(new Vector2(middle.x, middle.y + 1), newColor);
+        CheckMiddle(new Vector2(middle.x + 1, middle.y), newColor);
+        CheckMiddle(new Vector2(middle.x, middle.y - 1), newColor);
+        pos.Clear();
     }
     bool ImageCheck(float x,float y,Color newColor)
     {
