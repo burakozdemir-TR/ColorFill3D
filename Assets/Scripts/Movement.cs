@@ -143,7 +143,8 @@ public class Movement : MonoBehaviour
         //{
         //    Debug.Log(i.sqrMagnitude);
         //}
-        if (!isMoving)
+        
+        //if (!isMoving)
             CheckMiddle(new Vector2(x,y),newColor);
             //FloodFill(y, x, newColor);
         //return new Vector2(x, y);
