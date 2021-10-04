@@ -62,8 +62,6 @@ public class Movement : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        if (transform.position.x > ground.rows || transform.position.y > ground.cols || transform.position.x < 0 || transform.position.y < 0)
-            yield return null;
         transform.position = targetPos;
         isMoving = false;
     }
